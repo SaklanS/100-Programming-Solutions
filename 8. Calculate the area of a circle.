@@ -1,0 +1,15 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int Radius;
+    
+    printf("Give me the Radius of the Circule: ");
+    scanf("%d",&Radius);
+    
+    float Circle =  3.1416 * Radius * Radius;
+    
+    printf("The area of Circle %.2f",Circle);
+
+    return 0;
+}

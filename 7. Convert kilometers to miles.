@@ -1,0 +1,15 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int Kilomiter;
+    
+    printf("Give me the value of Kilomiter: ");
+    scanf("%d",&Kilomiter);
+    
+    float Miles =  Kilomiter * 0.621371;
+    
+    printf("The value of Farenhight is %.2f",Miles);
+
+    return 0;
+}

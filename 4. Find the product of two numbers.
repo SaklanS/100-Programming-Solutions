@@ -1,0 +1,17 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int FirstNumber,SecondNumber, Product;
+    
+    printf("Give me the value of First Number: ");
+    scanf("%d",&FirstNumber);
+    
+    printf("Give me the value of Second Number: ");
+    scanf("%d",&SecondNumber);
+    
+    Product = FirstNumber * SecondNumber;
+    printf("Product of the number is: %d",Product);
+
+    return 0;
+}

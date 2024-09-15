@@ -1,0 +1,22 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int Number1, Number2, Number3;
+    
+    printf("Give me the Number of One: ");
+    scanf("%d",&Number1);
+    
+    printf("Give me the Number of Two: ");
+    scanf("%d",&Number2);
+    
+    printf("Give me the Number of three: ");
+    scanf("%d",&Number3);
+    
+    
+    int Average = (Number1 + Number2 + Number3) / 3;
+    
+    printf("The Average of this Three number is: %d",Average);
+    
+    return 0;
+}

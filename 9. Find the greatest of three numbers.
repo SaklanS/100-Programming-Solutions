@@ -1,0 +1,26 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int Number1, Number2, Number3;
+    
+    printf("Give me the Number of One: ");
+    scanf("%d",&Number1);
+    
+    printf("Give me the Number of Two: ");
+    scanf("%d",&Number2);
+    
+    printf("Give me the Number of three: ");
+    scanf("%d",&Number3);
+    
+    
+    if(Number1 >= Number2 && Number1 >= Number3){
+        printf("The Largest Number is Number One: %d",Number1);
+    }else if(Number2 >= Number1 && Number2 >= Number3){
+        printf("The Largest Number is Number Two: %d",Number2);
+    }else{
+        printf("The Largest Number is Number Three: %d",Number3);
+    }
+
+    return 0;
+}

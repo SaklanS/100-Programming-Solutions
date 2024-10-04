@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main ()
+{
+    int n;
+    
+    printf("Give me the Letter: ");
+    scanf("%c",&n);
+    char l = n - 32;
+    printf("%c",l);
+
+    return 0;
+}

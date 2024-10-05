@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    int width, height;
+
+    // Ask the user for the width and height of the square
+    printf("Enter the width of the square: ");
+    scanf("%d", &width);
+    
+    printf("Enter the height of the square: ");
+    scanf("%d", &height);
+
+    // Top side of the square
+    for (int i = 1; i <= width; i++) {
+        printf("_");
+    }
+    printf("\n");
+
+    // Middle part of the square
+    for (int i = 1; i <= height; i++) {
+        printf("|");
+        for (int j = 1; j <= width - 2; j++) {
+            printf(" ");
+        }
+        printf("|\n");
+    }
+
+    // Bottom side of the square
+    for (int i = 1; i <= width; i++) {
+        printf("_");
+    }
+    printf("\n");
+
+    return 0;
+}

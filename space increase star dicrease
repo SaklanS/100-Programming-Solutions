@@ -1,0 +1,19 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int n= 10, i,j;
+    
+
+    for(i = 1; i <= n; i++){
+        for(j = 0; j < i; j++){
+            printf(" ");
+        }
+        for(int k = i ; k <= n; k++){
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}

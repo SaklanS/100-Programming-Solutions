@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int n = 5;  // You can change the value of n to increase or decrease the size of the rhombus
+
+    // Upper part of the rhombus
+    for (int i = 1; i <= n; i++) {
+        // Print leading spaces
+        for (int j = i; j < n; j++) {
+            printf(" ");
+        }
+
+        // Print left side of the rhombus
+        printf("/");
+
+        // Print spaces inside the rhombus
+        for (int j = 1; j <= (i - 1) * 2; j++) {
+            printf(" ");
+        }
+
+        // Print right side of the rhombus
+        printf("\\\n");
+    }
+
+    // Lower part of the rhombus
+    for (int i = n - 1; i >= 1; i--) {
+        // Print leading spaces
+        for (int j = n; j > i; j--) {
+            printf(" ");
+        }
+
+        // Print left side of the rhombus
+        printf("\\");
+
+        // Print spaces inside the rhombus
+        for (int j = 1; j <= (i - 1) * 2; j++) {
+            printf(" ");
+        }
+
+        // Print right side of the rhombus
+        printf("/\n");
+    }
+
+    return 0;
+}

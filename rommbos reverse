@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int width = 15;  // Width of the top side
+    int height = 3;  // Height of the slanting sides
+
+    // Print the top side of the shape
+    for (int i = 1; i <= width; i++) {
+        printf("_");
+    }
+    printf("\n");
+
+    // Print the left slanting side with backslashes
+    for (int i = 1; i <= height; i++) {
+        // Print leading spaces for the slant
+        for (int j = 1; j <= i; j++) {
+            printf(" ");
+        }
+        printf("\\");
+
+        // Print spaces for the inside until the last slanting side
+        for (int j = 1; j <= width; j++) {
+            if (i == height) {
+                printf("_");  // Print underscore at the bottom right
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\\\n");  // Closing with backslash
+    }
+
+    return 0;
+}

@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int num1 = 12 , num2 = 18, gcd, lcm,n1,n2;
+    
+    if( num2 > num1){
+        n1 = num2;
+        n2 = num1;
+        gcd = n1 % n2;
+        lcm = n1 * n2 / gcd;
+    }else {
+        gcd = num1 % num2;
+        lcm = num1 * num2 / gcd;
+    }
+    
+    printf("%d the GCD\n",gcd);
+    printf("%d the LCM\n",lcm);
+    
+    return 0;
+}

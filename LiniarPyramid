@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    int n = 5; // Height of the pyramid
+    int numPyramids; // Number of pyramids
+
+    printf("Enter the number of pyramids: ");
+    scanf("%d", &numPyramids);
+
+    for (int i = 1; i <= n; i++) { // Loop for pyramid height
+        for (int m = 0; m < numPyramids; m++) { // Loop for number of pyramids
+            // Print leading spaces for each pyramid
+            for (int j = 1; j <= n - i; j++) {
+                printf(" ");
+            }
+            printf("/");
+
+            // Print spaces or underscores for the inner part of the pyramid
+            if (n == i) {
+                for (int k = 1; k <= (i - 1) * 2; k++) {
+                    printf("_");
+                }
+            } else {
+                for (int k = 1; k <= (i - 1) * 2; k++) {
+                    printf(" ");
+                }
+            }
+
+            printf("\\"); // Close the pyramid
+
+            // Print space between pyramids
+            if (m < numPyramids - 1) {
+                for (int j = 0; j <= n - i; j++) {
+                    printf(" "); // Adjust spacing between pyramids
+                }
+            }
+        }
+        printf("\n"); // Move to the next line after printing all pyramids in a row
+    }
+
+    return 0;
+}

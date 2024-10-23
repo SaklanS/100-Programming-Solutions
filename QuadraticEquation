@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <math.h>  // math.h library included
+
+int main() {
+    float a, b, c;
+    float discriminant, realPart, imaginaryPart, root1, root2;
+    
+    printf("               Equation Solver V1.2\n");
+    printf("               ====================\n\n");
+
+    printf("a: ");
+    scanf("%f", &a);
+    printf("b: ");
+    scanf("%f", &b);
+    printf("c: ");
+    scanf("%f", &c);
+    
+    printf("\nEquation: %.0fx^2 ", a);
+    if (b < 0) {
+        printf("- %.0fx ", -b);
+    } else {
+        printf("+ %.0fx ", b);
+    }
+    if (c < 0) {
+        printf("- %.0f = 0\n", -c);
+    } else {
+        printf("+ %.0f = 0\n", c);
+    }
+    
+    discriminant = b * b - 4 * a * c;
+
+    printf("\nSolution:\n");
+
+    if (discriminant > 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("x1 = %.2f\n", root1);
+        printf("x2 = %.2f\n", root2);
+    } else if (discriminant == 0) {
+        root1 = -b / (2 * a);
+        printf("x1 = x2 = %.2f\n", root1);
+    } else {
+        realPart = -b / (2 * a);
+        imaginaryPart = sqrt(-discriminant) / (2 * a);
+        printf("x1 = %.2f + %.2fi\n", realPart, imaginaryPart);
+        printf("x2 = %.2f - %.2fi\n", realPart, imaginaryPart);
+    }
+
+    return 0;
+}

@@ -1,0 +1,108 @@
+#include <stdio.h>
+
+int main() {
+    int n; // Height of the pyramid
+    int numPyramids; // Number of pyramids
+
+    printf("Enter the height of the pyramid: ");
+    scanf("%d", &n);
+    
+    printf("Enter the number of pyramids: ");
+    scanf("%d", &numPyramids);
+
+    // Calculate the total width needed for the last row
+    int totalWidth = (2 * (n - 1) + 1) * numPyramids + (numPyramids - 1) * (n - 1);
+
+    // Print the first row with 1 centered pyramid
+    for (int i = 1; i <= n; i++) { // Loop for pyramid height
+        // Centering for the first pyramid
+        for (int j = 1; j <= (totalWidth - (2 * (i - 1) + 1)) / 2; j++) {
+            printf(" ");
+        }
+        printf("/");
+
+        // Print spaces or underscores for the inner part of the pyramid
+        if (n == i) {
+            for (int k = 1; k <= (i - 1) * 2; k++) {
+                printf("_");
+            }
+        } else {
+            for (int k = 1; k <= (i - 1) * 2; k++) {
+                printf(" ");
+            }
+        }
+
+        printf("\\\n"); // Close the pyramid
+    }
+
+    // Print the second row with 2 centered pyramids if numPyramids >= 2
+    if (numPyramids >= 2) {
+        for (int i = 1; i <= n; i++) { // Loop for pyramid height
+            // Centering for the second row
+            for (int j = 1; j <= (totalWidth - (2 * (i - 1) + 2) * 2 - (n - 1)) / 2; j++) {
+                printf(" ");
+            }
+            for (int m = 0; m < 2; m++) { // Loop for two copies of the pyramid
+                printf("/");
+
+                // Print spaces or underscores for the inner part of the first pyramid in this row
+                if (n == i && m == 0) { // Correct shape for the first pyramid
+                    for (int k = 1; k <= (i - 1) * 2; k++) {
+                        printf("_");
+                    }
+                } else if (n == i) { // Correct shape for the second pyramid
+                    for (int k = 1; k <= (i - 1) * 2; k++) {
+                        printf("_");
+                    }
+                } else {
+                    for (int k = 1; k <= (i - 1) * 2; k++) {
+                        printf(" ");
+                    }
+                }
+
+                printf("\\"); // Close the pyramid
+
+                // Print space between pyramids
+                if (m < 1) {
+                    for (int j = 0; j <= n - i; j++) {
+                        printf(" "); // Adjust spacing between pyramids
+                    }
+                }
+            }
+            printf("\n"); // Move to the next line after printing both copies of the second pyramid
+        }
+    }
+
+    // Print the third row with up to numPyramids centered pyramids
+    for (int i = 1; i <= n; i++) { // Loop for pyramid height
+        for (int m = 0; m < numPyramids; m++) { // Loop for the specified number of pyramids
+            for (int j = 1; j <= n - i; j++) { // Print leading spaces
+                printf(" ");
+            }
+            printf("/");
+
+            // Print spaces or underscores for the inner part of the pyramid
+            if (n == i) {
+                for (int k = 1; k <= (i - 1) * 2; k++) {
+                    printf("_");
+                }
+            } else {
+                for (int k = 1; k <= (i - 1) * 2; k++) {
+                    printf(" ");
+                }
+            }
+
+            printf("\\"); // Close the pyramid
+
+            // Print space between pyramids
+            if (m < numPyramids - 1) {
+                for (int j = 0; j <= n - i; j++) {
+                    printf(" "); // Adjust spacing between pyramids
+                }
+            }
+        }
+        printf("\n"); // Move to the next line after printing all pyramids in this row
+    }
+
+    return 0;
+}

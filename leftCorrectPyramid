@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+    int size; 
+    int numPyramids; 
+
+    printf("Enter the height of the pyramid: ");
+    scanf("%d", &size);
+    
+    printf("Enter the number of pyramids: ");
+    scanf("%d", &numPyramids);
+
+    // Calculate total width based on the size and number of pyramids
+    int totalWidth = (2 * (size - 1) + 1) * numPyramids + (numPyramids - 1) * (size - 1); 
+
+    // Starting spaces calculation based on totalWidth
+    int startingSpaces = totalWidth - (size + (size - 1) * (numPyramids - 1));
+
+    for (int row = 1; row <= numPyramids; row++) {
+        for (int i = 1; i <= size; i++) { 
+            // Calculate spacesBefore based on the new formula
+            int spacesBefore = startingSpaces - ((row - 1) * numPyramids + (i - 1));
+
+            for (int j = 0; j < spacesBefore; j++) {
+                printf(" ");
+            }
+
+            for (int m = 0; m < row; m++) {
+                printf("/");
+
+                // Print underscores for the last row, otherwise print 'B'
+                if (i == size) {
+                    for (int k = 0; k < (i - 1) * 2; k++) {
+                        printf("_");
+                    }
+                } else {
+                    for (int k = 0; k < (i - 1) * 2; k++) {
+                        printf(" ");
+                    }
+                }
+
+                printf("\\"); 
+
+                // Print 'C' for spacing if it's not the last pyramid in the row
+                if (m < row - 1) {
+                    for (int j = 0; j < size - i; j++) {
+                        printf(" "); 
+                    }
+                }
+            }
+            printf("\n");
+        }
+    }
+
+    return 0;
+}

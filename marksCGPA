@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int numStudents = 39;
+    int marks[39]; 
+    int gradeCount[9] = {0}; 
+    float totalPoints = 0.0; 
+    float cgpa;
+
+    srand(time(0));
+
+    printf("The marks are:\n");
+    for(int i = 0; i < numStudents; i++) {
+        marks[i] = (rand() % 75) + 25; 
+        printf("%d ", marks[i]);
+    }
+    printf("\n");
+
+    for(int i = 0; i < numStudents; i++) {
+        if(marks[i] >= 90) {
+            gradeCount[0]++;
+            totalPoints += 4.0; 
+        } else if(marks[i] >= 85) {
+            gradeCount[1]++;
+            totalPoints += 3.7; 
+        } else if(marks[i] >= 80) {
+            gradeCount[2]++;
+            totalPoints += 3.3; 
+        } else if(marks[i] >= 75) {
+            gradeCount[3]++;
+            totalPoints += 3.0; 
+        } else if(marks[i] >= 70) {
+            gradeCount[4]++;
+            totalPoints += 2.7; 
+        } else if(marks[i] >= 65) {
+            gradeCount[5]++;
+            totalPoints += 2.3; 
+        } else if(marks[i] >= 60) {
+            gradeCount[6]++;
+            totalPoints += 2.0; 
+        } else if(marks[i] >= 50) {
+            gradeCount[7]++;
+            totalPoints += 1.0; 
+        } else {
+            gradeCount[8]++;
+            totalPoints += 0.0; 
+        }
+    }
+
+    //cgpa = totalPoints / numStudents;
+
+    printf("Grade \t Frequencies:\n");
+    printf("===== \t =====\n");
+    printf("A+: \t  %d\n", gradeCount[0]);
+    printf("A:  \t  %d\n", gradeCount[1]);
+    printf("A-: \t  %d\n", gradeCount[2]);
+    printf("B+: \t  %d\n", gradeCount[3]);
+    printf("B:  \t  %d\n", gradeCount[4]);
+    printf("B-: \t  %d\n", gradeCount[5]);
+    printf("C:  \t  %d\n", gradeCount[6]);
+    printf("D:  \t  %d\n", gradeCount[7]);
+    printf("F:  \t  %d\n", gradeCount[8]);
+
+   // printf("CGPA: %.2f\n", cgpa);
+
+    return 0;
+}

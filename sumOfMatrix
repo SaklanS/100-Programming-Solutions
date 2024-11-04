@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int a[3][3];
+    int i, j;
+
+    srand(time(0));
+    printf("The matrix elements are: \n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            a[i][j] = rand() % 10;
+            printf("\t %d", a[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    
+    //for sum row
+    for (i = 0; i < 3; i++) {
+        int sum = 0;
+        for (j = 0; j < 3; j++) {
+            sum += a[i][j];
+        }
+        printf("Sum of row %d: %d\n", i + 1, sum);
+    }
+    
+    //for sum  col
+    
+    for (i = 0; i < 3; i++) {
+        int sum = 0;
+        for (j = 0; j < 3; j++) {
+            sum += a[j][i];
+        }
+        printf("Sum of Col %d: %d\n", j + 1, sum);
+    }    
+
+    return 0;
+}

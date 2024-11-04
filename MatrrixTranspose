@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int a[3][5], aT[5][3];
+    int i, j;
+
+    srand(time(0));
+    printf("The matrix elements are: \n");
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 5; j++) {
+            a[i][j] = rand() % 10;
+            printf("\t%d", a[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    // Generate the transpose
+    for (i = 0; i < 5; i++) {
+        for (j = 0; j < 3; j++) {
+            aT[i][j] = a[j][i];
+            printf("\t%d", aT[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    return 0;
+}

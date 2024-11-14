@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+int str_len(const char str[]) {
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
+}
+
+void str_cat(char destination[], const char source[]) {
+    int dest_len = str_len(destination);
+    int i = 0;
+    while (source[i] != '\0') {
+        destination[dest_len + i] = source[i];
+        i++;
+    }
+    destination[dest_len + i] = '\0';
+}
+
+void str_cpy(char destination[], const char source[]) {
+    int i = 0;
+    while (source[i] != '\0') {
+        destination[i] = source[i];
+        i++;
+    }
+    destination[i] = '\0';
+}
+
+int str_cmp(const char s1[], const char s2[]) {
+    int i = 0;
+    while (s1[i] != '\0' && s2[i] != '\0') {
+        if (s1[i] != s2[i]) {
+            return s1[i] - s2[i];
+        }
+        i++;
+    }
+    return s1[i] - s2[i];
+}
+
+void str_rev(char s[]) {
+    int len = str_len(s);
+    for (int i = 0; i < len / 2; i++) {
+        char temp = s[i];
+        s[i] = s[len - i - 1];
+        s[len - i - 1] = temp;
+    }
+}
+
+int main() {
+    char str1[100] = "test string";
+    char str2[100] = " appended";
+
+    printf("Length of str1: %d\n", str_len(str1));
+
+    str_cat(str1, str2);
+    printf("Concatenated string: %s\n", str1);
+
+    char str3[100];
+    str_cpy(str3, str1);
+    printf("Copied string: %s\n", str3);
+
+    printf("Comparison of 'Hello' and 'Hello': %d\n", str_cmp("Hello", "Hello"));
+    printf("Comparison of 'Hello' and 'World': %d\n", str_cmp("Hello", "World"));
+
+    str_rev(str1);
+    printf("Reversed string: %s\n", str1);
+
+    return 0;
+}

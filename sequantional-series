@@ -1,0 +1,21 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int i,n,sum = 0;
+    printf("Enter the start of Series: ");
+    scanf("%d",&i);
+    
+    printf("Enter the End of Series: ");
+    scanf("%d",&n);
+    
+    //printf("%d",i);
+    
+    for(int j = i; j < n; j++){
+        sum+=j;
+        printf("%d + ",j);
+    }
+    printf("%d = %d",n,sum);
+
+    return 0;
+}

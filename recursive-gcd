@@ -1,0 +1,16 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int gcd(int a,int b);
+int main() {
+    printf("The Gcd of %d and %d is: %d",150,12,gcd(150,12));
+
+    return 0;
+}
+
+int gcd(int a,int b)
+{
+    if(b == 0)
+        return a;
+    return gcd(b,a%b);  
+}

@@ -1,0 +1,204 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* prev;
+    Node* next;
+    Node(int val) : data(val), prev(NULL), next(NULL) {}
+};
+
+class DoublyLinkedList {
+public:
+    Node* head;
+    DoublyLinkedList() : head(NULL) {}
+
+    void insertFront(int val) {
+        Node* newNode = new Node(val);
+        if (head) {
+            newNode->next = head;
+            head->prev = newNode;
+        }
+        head = newNode;
+    }
+
+    void insertEnd(int val) {
+        Node* newNode = new Node(val);
+        if (!head) {
+            head = newNode;
+            return;
+        }
+        Node* temp = head;
+        while (temp->next) temp = temp->next;
+        temp->next = newNode;
+        newNode->prev = temp;
+    }
+
+    void insertAt(int pos, int val) {
+        if (pos == 1) {
+            insertFront(val);
+            return;
+        }
+        Node* temp = head;
+        for (int i = 1; temp && i < pos - 1; i++)
+            temp = temp->next;
+        if (!temp) return;
+        Node* newNode = new Node(val);
+        newNode->next = temp->next;
+        newNode->prev = temp;
+        if (temp->next) temp->next->prev = newNode;
+        temp->next = newNode;
+    }
+
+    void deleteFront() {
+        if (!head) return;
+        Node* temp = head;
+        head = head->next;
+        if (head) head->prev = NULL;
+        delete temp;
+    }
+
+    void deleteEnd() {
+        if (!head) return;
+        Node* temp = head;
+        while (temp->next) temp = temp->next;
+        if (temp->prev) temp->prev->next = NULL;
+        else head = NULL;
+        delete temp;
+    }
+
+    void deleteAt(int pos) {
+        if (pos == 1) {
+            deleteFront();
+            return;
+        }
+        Node* temp = head;
+        for (int i = 1; temp && i < pos; i++)
+            temp = temp->next;
+        if (!temp) return;
+        if (temp->prev) temp->prev->next = temp->next;
+        if (temp->next) temp->next->prev = temp->prev;
+        delete temp;
+    }
+
+    void traverseForward() {
+        Node* temp = head;
+        while (temp) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+
+    void traverseBackward() {
+        Node* temp = head;
+        while (temp && temp->next) temp = temp->next;
+        while (temp) {
+            cout << temp->data << " ";
+            temp = temp->prev;
+        }
+        cout << endl;
+    }
+
+    void reverseList() {
+        Node* temp = NULL;
+        Node* current = head;
+        while (current) {
+            temp = current->prev;
+            current->prev = current->next;
+            current->next = temp;
+            current = current->prev;
+        }
+        if (temp) head = temp->prev;
+    }
+
+    void mergeList(DoublyLinkedList& other) {
+        if (!head) {
+            head = other.head;
+            return;
+        }
+        Node* temp = head;
+        while (temp->next) temp = temp->next;
+        temp->next = other.head;
+        if (other.head) other.head->prev = temp;
+        other.head = NULL;
+    }
+
+    void removeDuplicates() {
+        Node* temp = head;
+        while (temp) {
+            Node* runner = temp->next;
+            while (runner) {
+                if (runner->data == temp->data) {
+                    Node* toDelete = runner;
+                    if (runner->prev) runner->prev->next = runner->next;
+                    if (runner->next) runner->next->prev = runner->prev;
+                    runner = runner->next;
+                    delete toDelete;
+                } else {
+                    runner = runner->next;
+                }
+            }
+            temp = temp->next;
+        }
+    }
+
+    void sortList() {
+        if (!head || !head->next) return;
+        bool swapped;
+        do {
+            swapped = false;
+            Node* temp = head;
+            while (temp->next) {
+                if (temp->data > temp->next->data) {
+                    swap(temp->data, temp->next->data);
+                    swapped = true;
+                }
+                temp = temp->next;
+            }
+        } while (swapped);
+    }
+};
+
+int main() {
+    DoublyLinkedList list1, list2;
+
+    list1.insertEnd(5);
+    list1.insertEnd(3);
+    list1.insertEnd(9);
+    list1.insertEnd(1);
+    list1.insertEnd(3);
+    cout << "Original List: ";
+    list1.traverseForward();
+
+    list1.sortList();
+    cout << "Sorted List: ";
+    list1.traverseForward();
+
+    list1.insertAt(3, 7);
+    cout << "After inserting 7 at position 3: ";
+    list1.traverseForward();
+
+    list1.deleteAt(2);
+    cout << "After deleting element at position 2: ";
+    list1.traverseForward();
+
+    list1.reverseList();
+    cout << "Reversed List: ";
+    list1.traverseForward();
+
+    list1.removeDuplicates();
+    cout << "After removing duplicates: ";
+    list1.traverseForward();
+
+    list2.insertEnd(8);
+    list2.insertEnd(2);
+    cout << "Second List: ";
+    list2.traverseForward();
+
+    list1.mergeList(list2);
+    cout << "After merging: ";
+    list1.traverseForward();
+
+    return 0;
+}
